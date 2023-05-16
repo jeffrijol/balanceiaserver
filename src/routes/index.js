@@ -8,6 +8,7 @@ const authCtrl = require('../../src/controllers/auth');
 const alertCtrl = require('../controllers/mail');
 const billFileList = require('../controllers/bill_files');
 const customerCtrl = require('../controllers/customer');
+const rentalHouseCtrl = require('../controllers/rental_house');
 const auth = require('../middlewares/auth');
 const logService = require('../middlewares/billable_services_log')
 
@@ -19,7 +20,7 @@ api.get("/", (req, res) => {
 api.post('/user', userCtrl.create);
 api.get('/user', userCtrl.findAll);
 api.put('/user/:id', auth, userCtrl.update);
-api.get('/user/:id', auth, userCtrl.findById);
+api.get('/user/:id', userCtrl.findById);
 api.delete('/user/:id', auth, userCtrl.remove);
 
 
@@ -41,6 +42,11 @@ api.delete('/bill_files/:bill_id', auth, billFileList.remove);
 api.post('/customer', auth, customerCtrl.create);
 api.get('/customer', auth, customerCtrl.findAll);
 api.delete('/customer/:id', auth, customerCtrl.remove);
+
+//archivos de rental houses
+api.post('/rentalHouse', rentalHouseCtrl.create);
+api.get('/rentalHouse', auth, rentalHouseCtrl.findAll);
+api.delete('/rentalHouse/:id', auth, rentalHouseCtrl.remove);
 
 
 api.post('/mail', auth, logService, alertCtrl.send);

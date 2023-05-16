@@ -12,4 +12,4 @@ Authorization: bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJjci5lc3RlY
 ###
 GET http://localhost:9000/api/bill_files HTTP/1.1
 Content-Type: application/json
-Authorization: bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJjci5lc3RlYmFuQGdtYWlsLmNvbSIsImlhdCI6MTY2NjY2NDkyNCwiZXhwIjoxNjY3ODc0NTI0fQ.XU-AT7kuiMMvzz9zhPNcjSbWCECq7FYFDHOdPJ3-Ut8
+Authorization: bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJqZWZmY2I4OEBnbWFpbC5jb20iLCJpYXQiOjE2ODQyMjYzNjEsImV4cCI6MTY4NTQzNTk2MX0.L9SULjSh7orc38fn0YntIg09P-_Lu_ogjK72oDYCvnQ

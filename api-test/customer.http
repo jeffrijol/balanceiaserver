@@ -1,0 +1,9 @@
+###
+GET http://localhost:9000/api/customer HTTP/1.1
+Content-Type: application/json
+Authorization: bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJjci5lc3RlYmFuQGdtYWlsLmNvbSIsImlhdCI6MTY2NjY2NDkyNCwiZXhwIjoxNjY3ODc0NTI0fQ.XU-AT7kuiMMvzz9zhPNcjSbWCECq7FYFDHOdPJ3-Ut8
+
+
+###
+DELETE http://localhost:9000/api/customer/635815e3aa4a70c7bb7989e6 HTTP/1.1
+Authorization: bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJjci5lc3RlYmFuQGdtYWlsLmNvbSIsImlhdCI6MTY2NjY2NDkyNCwiZXhwIjoxNjY3ODc0NTI0fQ.XU-AT7kuiMMvzz9zhPNcjSbWCECq7FYFDHOdPJ3-Ut8

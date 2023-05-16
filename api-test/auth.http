@@ -1,0 +1,18 @@
+###
+POST http://localhost:9000/api/singup HTTP/1.1
+Content-Type: application/json
+
+{
+    "email": "cr.esteban@gmail.com",
+    "pass" : "Global01.",
+    "userId" : "0001",
+    "displayName" : "Esteban Calderon"
+}
+###
+POST  http://localhost:9000/api/singin HTTP/1.1
+Content-Type: application/json
+
+{
+    "email": "cr.esteban@gmail.com",
+    "pass" : "Global01."
+}

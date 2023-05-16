@@ -1,0 +1,15 @@
+###
+POST http://localhost:9000/api/mail HTTP/1.1
+Content-Type: application/json
+Authorization: bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJjci5lc3RlYmFuQGdtYWlsLmNvbSIsImlhdCI6MTY2NjY2NDkyNCwiZXhwIjoxNjY3ODc0NTI0fQ.XU-AT7kuiMMvzz9zhPNcjSbWCECq7FYFDHOdPJ3-Ut8
+
+{
+    "to": "ecladeron@interfaz.io",
+    "templateCode" : "0001",
+    "parameters" : {"nombre":"Un Nombre de Pruebas", "cuenta":"****3121"}
+}
+
+###
+GET http://localhost:9000/api/bill_files HTTP/1.1
+Content-Type: application/json
+Authorization: bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJjci5lc3RlYmFuQGdtYWlsLmNvbSIsImlhdCI6MTY2NjY2NDkyNCwiZXhwIjoxNjY3ODc0NTI0fQ.XU-AT7kuiMMvzz9zhPNcjSbWCECq7FYFDHOdPJ3-Ut8

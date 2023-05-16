@@ -4,9 +4,9 @@ Content-Type: application/json
 
 {
   "address": "Sardinero 4",
-  "type": "Chalet",
+  "type": "Casa",
   "bedrooms": 3,
-  "bathrooms": 2,
+  "bathrooms": 1,
   "services": [
     {
       "name": "Electricidad",
@@ -17,9 +17,14 @@ Content-Type: application/json
       "name": "Agua",
       "provider": "Water Utility",
       "contractDate": "2023-05-01"
+    },
+    {
+      "name": "Gas",
+      "provider": "Gas Utility",
+      "contractDate": "1-05-01"
     }
   ],
-  "managedByUser": "6463446d5b67c0906eac8679"
+  "managedByUser": "635862e637f0e9e41a6ebe14"
 }
 
 ###

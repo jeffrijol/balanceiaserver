@@ -4,7 +4,8 @@ const api = express.Router();
 
 const userCtrl = require('../../src/controllers/user');
 const authCtrl = require('../../src/controllers/auth');
-const rentalHouseCtrl = require('../controllers/rental_house');
+const rentalHouseController = require('../controllers/rental_house');
+
 const auth = require('../middlewares/auth');
 //const logService = require('../middlewares/billable_services_log')
 
@@ -25,9 +26,23 @@ api.post('/singin', authCtrl.singIn);
 api.post('/singup', authCtrl.singUp);
 
 //archivos de rental houses
-api.post('/rentalHouse', rentalHouseCtrl.create);
-api.get('/rentalHouse', auth, rentalHouseCtrl.findAll);
-api.delete('/rentalHouse/:id', auth, rentalHouseCtrl.remove);
+// Ruta para crear una nueva propiedad de alquiler
+api.post('/rental-houses', rentalHouseController.createRentalHouse);
+
+// Ruta para obtener todas las propiedades de alquiler
+api.get('/rental-houses', rentalHouseController.getAllRentalHouses);
+
+// Ruta para obtener una propiedad de alquiler por su ID
+api.get('/rental-houses/:id', rentalHouseController.getRentalHouseById);
+
+// Ruta para buscar propiedades de alquiler por el ID del usuario que las gestiona
+api.get('/rental-houses/user/:userId', rentalHouseController.getRentalHousesByUser);
+
+// Ruta para actualizar una propiedad de alquiler por su ID
+api.put('/rental-houses/:id', rentalHouseController.updateRentalHouseById);
+
+// Ruta para eliminar una propiedad de alquiler por su ID
+api.delete('/rental-houses/:id', rentalHouseController.deleteRentalHouseById);
 
 
 //api.post('/mail', auth, logService, alertCtrl.send);

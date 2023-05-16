@@ -1,61 +1,86 @@
-const express = require('express');
-const rentalHouseSchema = require('../models/rental_house');
+const RentalHouse = require('../models/rental_house');
 
-//create template
-function create(req, res) {
-    console.log(req.body);
-    const billFiles = rentalHouseSchema(req.body);
-    billFiles.save()
-    .then((data)=>res.json(data))
-    .catch((error)=>res.json({message : error}))
-};
-//find all templates
-function findAll(req, res) {
-  rentalHouseSchema.find()
-    .then((data)=>res.json(data))
-    .catch((error)=>res.json({message : error}))
+// Controlador para crear una nueva propiedad de alquiler
+const createRentalHouse = async (req, res) => {
+  try {
+    const rentalHouse = await RentalHouse.create(req.body);
+    res.status(201).json(rentalHouse);
+  } catch (error) {
+    res.status(500).json({ error: 'Failed to create rental house' });
+  }
 };
 
-//find template by code
-function find(req, res) {
-  const {code} = req.params;
-  const pipeline = [
-    {
-      '$match': {
-        'codigo': code
-      }
+// Controlador para obtener todas las propiedades de alquiler
+const getAllRentalHouses = async (req, res) => {
+  try {
+    const rentalHouses = await RentalHouse.find();
+    res.json(rentalHouses);
+  } catch (error) {
+    res.status(500).json({ error: 'Failed to fetch rental houses' });
+  }
+};
+
+
+
+// Controlador para buscar propiedades de alquiler por el ID del usuario que las gestiona
+const getRentalHousesByUser = async (req, res) => {
+  try {
+    const { managedByUser } = req.query;
+    const rentalHouses = await RentalHouse.find({ managedByUser });
+    res.json(rentalHouses);
+  } catch (error) {
+    res.status(500).json({ error: 'Failed to fetch rental houses' });
+  }
+};
+
+
+// Controlador para obtener una propiedad de alquiler por su ID
+const getRentalHouseById = async (req, res) => {
+  try {
+    const rentalHouse = await RentalHouse.findById(req.params.id);
+    if (!rentalHouse) {
+      return res.status(404).json({ error: 'Rental house not found' });
     }
-  ];
-  rentalHouseSchema.aggregate(pipeline)
-  .then((data)=>{
-      if(!data) res.status(404).send({message:`No existe la platilla con código ${code}`});
-      res.status(200).send({
-        template:data
-      });
-  })
-  .catch((error)=>{
-      res.status(200).send({
-          error
-      });
-  })
+    res.json(rentalHouse);
+  } catch (error) {
+    res.status(500).json({ error: 'Failed to fetch rental house' });
+  }
 };
 
-
-//find al clients
-function update (req, res) {
-    const {id} = req.params;
-    const {code, templateHtml} = req.body;
-    rentalHouseSchema.updateOne({_id:id}, {$set : {code, templateHtml}})
-    .then((data)=>res.json(data))
-    .catch((error)=>res.json({message : error}))
+// Controlador para actualizar una propiedad de alquiler por su ID
+const updateRentalHouseById = async (req, res) => {
+  try {
+    const rentalHouse = await RentalHouse.findByIdAndUpdate(req.params.id, req.body, {
+      new: true,
+      runValidators: true,
+    });
+    if (!rentalHouse) {
+      return res.status(404).json({ error: 'Rental house not found' });
+    }
+    res.json(rentalHouse);
+  } catch (error) {
+    res.status(500).json({ error: 'Failed to update rental house' });
+  }
 };
 
-//find al clients
-function remove(req, res) {
-    const {id} = req.params;
-    rentalHouseSchema.remove({_id: id})
-    .then((data)=>res.json(data))
-    .catch((error)=>res.json({message : error}))
+// Controlador para eliminar una propiedad de alquiler por su ID
+const deleteRentalHouseById = async (req, res) => {
+  try {
+    const rentalHouse = await RentalHouse.findByIdAndRemove(req.params.id);
+    if (!rentalHouse) {
+      return res.status(404).json({ error: 'Rental house not found' });
+    }
+    res.json({ message: 'Rental house deleted successfully' });
+  } catch (error) {
+    res.status(500).json({ error: 'Failed to delete rental house' });
+  }
 };
 
-module.exports = {create, findAll, update, remove, find};
+module.exports = {
+  createRentalHouse,
+  getAllRentalHouses,
+  getRentalHousesByUser,
+  getRentalHouseById,
+  updateRentalHouseById,
+  deleteRentalHouseById,
+};

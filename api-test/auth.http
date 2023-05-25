@@ -22,6 +22,6 @@ POST  http://localhost:9000/api/singin HTTP/1.1
 Content-Type: application/json
 
 {
-    "email": "jeffcb88@gmail.com",
+    "email": "superfacilderecordar@hotmail.com",
     "pass" : "Global01."
 }

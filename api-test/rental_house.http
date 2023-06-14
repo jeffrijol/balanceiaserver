@@ -32,20 +32,13 @@ GET http://localhost:9000/api/rentalHouse HTTP/1.1
 Content-Type: application/json
 
 ###
-GET http://localhost:9000/api/rentalHouse/6463446d5b67c0906eac8679 HTTP/1.1
+GET http://localhost:9000/api/rentalHouse/64635fd1d2110d801c37359d HTTP/1.1
 Content-Type: application/json
-
 
 ###
-PUT http://localhost:9000/api/rentalHouse/627ab90d691e2b1ad85f1e9b HTTP/1.1
+GET http://localhost:9000/api/rentalHouse/user/635862e637f0e9e41a6ebe14
 Content-Type: application/json
 
-{
-    "email": "cr.esteban@gmail.com3",
-    "pass" : "unpasscualquiera3",
-    "avatar" : "unavatarcualquiera3",
-    "displayName" : "Esteban Calderon",
-}
 
 ###
 DELETE http://localhost:9000/api/rentalHouse/627ab90d691e2b1ad85f1e9b HTTP/1.1

@@ -25,8 +25,9 @@ const getAllRentalHouses = async (req, res) => {
 // Controlador para buscar propiedades de alquiler por el ID del usuario que las gestiona
 const getRentalHousesByUser = async (req, res) => {
   try {
-    const { managedByUser } = req.query;
-    const rentalHouses = await RentalHouse.find({ managedByUser });
+    const { userId} = req.params;
+    const rentalHouses = await RentalHouse.find({ managedByUser:userId });
+        
     res.json(rentalHouses);
   } catch (error) {
     res.status(500).json({ error: 'Failed to fetch rental houses' });

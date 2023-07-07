@@ -26,7 +26,7 @@ const RentalHouseSchema = mongoose.Schema({
     },
     type: {
         type: String,
-        enum: ['Casa', 'Apartmento', 'Chalet', 'Other'],
+        enum: ['Casa', 'Apartmento', 'Chalet', 'Other','Terreno'],
         required: true
     },
     constructionDate: {
@@ -41,6 +41,10 @@ const RentalHouseSchema = mongoose.Schema({
     },
     bathrooms: {
         type: Number,
+        required: true
+    },
+    isActive: {
+        type: Boolean,
         required: true
     },
     services: [serviceSchema],
